@@ -2,7 +2,6 @@ import paho.mqtt.client as mqtt
 import RPi.GPIO as GPIO
 GPIO.setwarnings(False)
 
-
 def on_connect(client, userdata, rc,properties=None):
     print ("Connected with rc: " + str(rc))
     client.subscribe("exp7/led")
@@ -16,10 +15,6 @@ def on_message(client, userdata, msg):
     if b"0" in msg.payload:
         print("  Green off!")
         GPIO.output(11, False)
-        
-        
-        
-    
 
 client = mqtt.Client()
 client.on_connect = on_connect
